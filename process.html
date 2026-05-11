@@ -1,0 +1,618 @@
+﻿<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>製作の流れ・FAQ | 新井家具</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&display=swap" rel="stylesheet">
+<style>
+:root {
+  --brown-deep: #3d2b1f;
+  --brown-mid: #6b4f3a;
+  --brown-light: #a0784a;
+  --cream: #f5ede0;
+  --gold: #c9a05a;
+  --text: #2a1e14;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'Noto Serif JP', serif; background:var(--cream); color:var(--text); }
+
+/* NAV */
+nav {
+  background:var(--brown-deep);
+  padding:0 48px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  position:sticky; top:0; z-index:200;
+}
+.nav-logo { padding:20px 0; }
+.nav-logo h1 { color:var(--cream); font-size:15px; letter-spacing:3px; font-weight:400; }
+.nav-logo p { color:var(--gold); font-size:10px; letter-spacing:2px; font-family:'Cormorant Garamond', serif; }
+.nav-links { display:flex; gap:32px; }
+.nav-links a { color:rgba(245,237,224,.75); font-size:12px; letter-spacing:1px; text-decoration:none; transition:.2s; padding:28px 0; border-bottom:2px solid transparent; }
+.nav-links a:hover { color:var(--cream); border-bottom-color:var(--gold); }
+.nav-tel { color:var(--gold); font-size:13px; letter-spacing:1px; font-family:'Cormorant Garamond', serif; }
+.nav-tel a { color:inherit; text-decoration:none; }
+
+/* PAGE HERO */
+.page-hero {
+  height:300px;
+  background:linear-gradient(135deg, var(--brown-deep) 0%, var(--brown-mid) 60%, var(--brown-light) 100%);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  position:relative;
+  overflow:hidden;
+}
+.page-hero::before {
+  content:'';
+  position:absolute; inset:0;
+  background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+.page-hero-en {
+  font-family:'Cormorant Garamond', serif;
+  font-size:12px;
+  letter-spacing:5px;
+  color:var(--gold);
+  margin-bottom:16px;
+  position:relative;
+}
+.page-hero h2 {
+  color:var(--cream);
+  font-size:32px;
+  font-weight:300;
+  letter-spacing:5px;
+  position:relative;
+  margin-bottom:20px;
+}
+.breadcrumb {
+  display:flex;
+  gap:8px;
+  align-items:center;
+  position:relative;
+}
+.breadcrumb a, .breadcrumb span {
+  font-size:11px;
+  color:rgba(245,237,224,.5);
+  text-decoration:none;
+  letter-spacing:1px;
+}
+.breadcrumb a:hover { color:var(--gold); }
+.breadcrumb .sep { color:rgba(245,237,224,.3); }
+.breadcrumb .current { color:var(--gold); }
+
+/* SECTION COMMON */
+.section-header { text-align:center; margin-bottom:56px; }
+.section-header .en { font-family:'Cormorant Garamond', serif; font-size:13px; letter-spacing:4px; color:var(--gold); display:block; margin-bottom:12px; }
+.section-header h2 { font-size:28px; font-weight:300; letter-spacing:3px; color:var(--brown-deep); }
+.section-header::after { content:''; display:block; width:48px; height:1px; background:var(--gold); margin:20px auto 0; }
+.section-header.light h2 { color:var(--cream); }
+.section-header.light::after { background:var(--gold); }
+
+/* ===== PROCESS TIMELINE ===== */
+.process-section {
+  padding:80px 48px;
+  background:var(--cream);
+}
+.process-timeline {
+  max-width:860px;
+  margin:0 auto;
+  position:relative;
+}
+.process-timeline::before {
+  content:'';
+  position:absolute;
+  left:52px;
+  top:0;
+  bottom:0;
+  width:1px;
+  background:linear-gradient(to bottom, var(--gold), rgba(201,160,90,.1));
+}
+.process-step {
+  display:grid;
+  grid-template-columns:104px 1fr;
+  gap:0;
+  margin-bottom:56px;
+  position:relative;
+}
+.process-step:last-child { margin-bottom:0; }
+.process-step-num {
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:0;
+  position:relative;
+  z-index:1;
+}
+.step-circle {
+  width:48px; height:48px;
+  border-radius:50%;
+  background:var(--brown-deep);
+  border:2px solid var(--gold);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-shrink:0;
+}
+.step-circle span {
+  font-family:'Cormorant Garamond', serif;
+  font-size:18px;
+  color:var(--gold);
+  font-weight:300;
+  letter-spacing:1px;
+}
+.step-connector {
+  width:1px;
+  flex:1;
+  background:rgba(201,160,90,.3);
+  margin-top:8px;
+}
+.process-step:last-child .step-connector { display:none; }
+.process-step-body {
+  background:#fff;
+  padding:32px 36px;
+  border-left:3px solid var(--gold);
+  margin-left:24px;
+  margin-top:0;
+  position:relative;
+}
+.process-step-body::before {
+  content:'';
+  position:absolute;
+  left:-10px; top:18px;
+  width:0; height:0;
+  border-top:8px solid transparent;
+  border-bottom:8px solid transparent;
+  border-right:10px solid var(--gold);
+}
+.process-step-body .step-period {
+  display:inline-block;
+  background:var(--cream);
+  color:var(--brown-mid);
+  font-size:10px;
+  letter-spacing:2px;
+  padding:3px 12px;
+  border:1px solid rgba(107,79,58,.25);
+  margin-bottom:12px;
+}
+.process-step-body h3 {
+  font-size:18px;
+  font-weight:400;
+  letter-spacing:2px;
+  color:var(--brown-deep);
+  margin-bottom:14px;
+}
+.process-step-body p {
+  font-size:13px;
+  color:#666;
+  line-height:2.2;
+}
+.process-step-body .step-note {
+  margin-top:14px;
+  padding-top:14px;
+  border-top:1px solid rgba(107,79,58,.1);
+  font-size:11px;
+  color:var(--brown-light);
+  line-height:1.8;
+}
+
+/* ===== FAQ ===== */
+.faq-section {
+  padding:80px 48px;
+  background:var(--brown-deep);
+}
+.faq-list {
+  max-width:860px;
+  margin:0 auto;
+  display:flex;
+  flex-direction:column;
+  gap:2px;
+}
+.faq-item {
+  background:rgba(255,255,255,.04);
+  border:1px solid rgba(201,160,90,.15);
+  overflow:hidden;
+  transition:border-color .25s;
+}
+.faq-item.open {
+  border-color:rgba(201,160,90,.4);
+}
+.faq-q {
+  display:flex;
+  align-items:center;
+  gap:20px;
+  padding:24px 28px;
+  cursor:pointer;
+  user-select:none;
+  transition:background .2s;
+}
+.faq-q:hover { background:rgba(255,255,255,.03); }
+.faq-q-icon {
+  flex-shrink:0;
+  width:32px; height:32px;
+  border-radius:50%;
+  background:rgba(201,160,90,.15);
+  border:1px solid rgba(201,160,90,.3);
+  display:flex; align-items:center; justify-content:center;
+  font-family:'Cormorant Garamond', serif;
+  font-size:14px;
+  color:var(--gold);
+  font-weight:600;
+}
+.faq-q-text {
+  flex:1;
+  font-size:14px;
+  letter-spacing:1px;
+  color:var(--cream);
+  line-height:1.6;
+}
+.faq-toggle {
+  flex-shrink:0;
+  width:24px; height:24px;
+  display:flex; align-items:center; justify-content:center;
+  color:var(--gold);
+  font-size:20px;
+  font-weight:300;
+  transition:transform .3s;
+  line-height:1;
+}
+.faq-item.open .faq-toggle { transform:rotate(45deg); }
+.faq-a {
+  max-height:0;
+  overflow:hidden;
+  transition:max-height .4s cubic-bezier(.4,0,.2,1), padding .4s;
+  padding:0 28px 0 80px;
+}
+.faq-item.open .faq-a {
+  max-height:400px;
+  padding:0 28px 24px 80px;
+}
+.faq-a p {
+  font-size:13px;
+  color:rgba(245,237,224,.65);
+  line-height:2.2;
+  border-top:1px solid rgba(201,160,90,.1);
+  padding-top:18px;
+}
+
+/* CTA SECTION */
+.cta-section {
+  padding:80px 48px;
+  background:linear-gradient(135deg, var(--brown-mid), var(--brown-deep));
+  text-align:center;
+}
+.cta-section h2 {
+  color:var(--cream);
+  font-size:26px;
+  font-weight:300;
+  letter-spacing:4px;
+  margin-bottom:12px;
+}
+.cta-section p {
+  color:rgba(245,237,224,.65);
+  font-size:13px;
+  margin-bottom:40px;
+  line-height:2;
+}
+.cta-btns {
+  display:flex;
+  gap:20px;
+  justify-content:center;
+  flex-wrap:wrap;
+}
+.btn-cta-primary {
+  background:var(--gold);
+  color:var(--brown-deep);
+  padding:16px 48px;
+  font-size:12px;
+  letter-spacing:3px;
+  border:none;
+  cursor:pointer;
+  font-family:'Noto Serif JP', serif;
+  text-decoration:none;
+  display:inline-block;
+  transition:.25s;
+}
+.btn-cta-primary:hover { background:var(--cream); }
+.btn-cta-secondary {
+  border:1px solid rgba(245,237,224,.4);
+  color:var(--cream);
+  padding:16px 48px;
+  font-size:12px;
+  letter-spacing:3px;
+  background:transparent;
+  cursor:pointer;
+  font-family:'Noto Serif JP', serif;
+  text-decoration:none;
+  display:inline-block;
+  transition:.25s;
+}
+.btn-cta-secondary:hover { border-color:var(--gold); color:var(--gold); }
+
+/* FOOTER */
+footer { background:#1a0f08; padding:40px 48px; display:flex; justify-content:space-between; align-items:center; }
+footer .f-logo { color:rgba(245,237,224,.4); font-size:11px; letter-spacing:2px; }
+footer .f-info { color:rgba(245,237,224,.3); font-size:10px; text-align:right; line-height:1.8; }
+
+/* ANIMATIONS */
+[data-anim] {
+  opacity: 0;
+  transition: opacity .75s cubic-bezier(.4,0,.2,1), transform .75s cubic-bezier(.4,0,.2,1);
+}
+[data-anim="up"]    { transform: translateY(48px); }
+[data-anim="left"]  { transform: translateX(-56px); }
+[data-anim="right"] { transform: translateX(56px); }
+[data-anim="scale"] { transform: scale(.88); }
+[data-anim="fade"]  { }
+[data-anim].anim-in {
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+@keyframes heroSlideUp {
+  from { opacity:0; transform:translateY(28px); }
+  to   { opacity:1; transform:translateY(0); }
+}
+.page-hero-en  { animation: heroSlideUp .7s .1s both; }
+.page-hero h2  { animation: heroSlideUp .7s .25s both; }
+.breadcrumb    { animation: heroSlideUp .7s .4s both; }
+
+@keyframes lineExpand { from{width:0} to{width:48px} }
+.section-header.anim-in::after { animation: lineExpand .5s .3s both; width:0; }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">
+    <h1>株式会社新井家具</h1>
+    <p>ARAI KAGU SEISAKUSHO</p>
+  </div>
+  <div class="nav-links">
+    <a href="arai_01_craft.html">ホーム</a>
+    <a href="works.html">製作事例</a>
+    <a href="process.html" style="color:var(--gold)">製作の流れ・FAQ</a>
+    <a href="about.html">会社概要</a>
+    <a href="contact.html">お問い合わせ</a>
+  </div>
+  <div class="nav-tel"><a href="tel:0273432005">☎ 027-343-2005</a></div>
+</nav>
+
+<!-- PAGE HERO -->
+<header class="page-hero">
+  <div class="page-hero-en">PROCESS &amp; FAQ</div>
+  <h2>製作の流れ・FAQ</h2>
+  <nav class="breadcrumb" aria-label="パンくずリスト">
+    <a href="arai_01_craft.html">ホーム</a>
+    <span class="sep">›</span>
+    <span class="current">製作の流れ・FAQ</span>
+  </nav>
+</header>
+
+<!-- ===== PROCESS SECTION ===== -->
+<section class="process-section">
+  <div class="section-header" data-anim="up">
+    <span class="en">PROCESS</span>
+    <h2>製作の流れ</h2>
+  </div>
+
+  <div class="process-timeline">
+
+    <div class="process-step" data-anim="left" data-delay="0">
+      <div class="process-step-num">
+        <div class="step-circle"><span>01</span></div>
+        <div class="step-connector"></div>
+      </div>
+      <div class="process-step-body">
+        <span class="step-period">目安：1〜3日</span>
+        <h3>ご相談・お問い合わせ</h3>
+        <p>まずはお気軽にお電話またはお問い合わせフォームからご連絡ください。サイズ・素材・ご予算・設置場所などをできるだけ教えていただくと、スムーズにご案内できます。初めての方もお気軽にどうぞ。</p>
+        <p class="step-note">📞 電話: 027-343-2005（営業時間 8:15〜17:30 / 日祝除く）</p>
+      </div>
+    </div>
+
+    <div class="process-step" data-anim="left" data-delay="100">
+      <div class="process-step-num">
+        <div class="step-circle"><span>02</span></div>
+        <div class="step-connector"></div>
+      </div>
+      <div class="process-step-body">
+        <span class="step-period">目安：1〜2週間</span>
+        <h3>打ち合わせ・お見積り・設計</h3>
+        <p>詳細をお聞きしながら、現場の採寸・設計・お見積りを行います。素材サンプルのご確認や3Dイメージのご提示も可能です。お見積りは無料ですので、まずはお気軽にご依頼ください。内容確定後に正式なご注文をいただきます。</p>
+        <p class="step-note">※お打ち合わせは来社またはご訪問にて対応いたします。遠方の方はオンラインでもご相談可能です。</p>
+      </div>
+    </div>
+
+    <div class="process-step" data-anim="left" data-delay="200">
+      <div class="process-step-num">
+        <div class="step-circle"><span>03</span></div>
+        <div class="step-connector"></div>
+      </div>
+      <div class="process-step-body">
+        <span class="step-period">目安：2〜8週間（内容により異なります）</span>
+        <h3>製作・施工</h3>
+        <p>自社工場にて、職人が一台一台丁寧に製作します。NC加工機を活用した精密加工のほか、変形・曲面・大型家具にも対応しています。製作完了後、現地への搬入・取り付けを行います。施工後の仕上げ確認まで責任をもって対応いたします。</p>
+        <p class="step-note">※製作期間はご注文内容・工場の混雑状況によって前後する場合があります。お急ぎの場合はご相談ください。</p>
+      </div>
+    </div>
+
+    <div class="process-step" data-anim="left" data-delay="300">
+      <div class="process-step-num">
+        <div class="step-circle"><span>04</span></div>
+        <!-- 最後はコネクター非表示 -->
+      </div>
+      <div class="process-step-body">
+        <span class="step-period">納品後〜</span>
+        <h3>納品・アフターケア</h3>
+        <p>納品後もご安心ください。使用中のご不明点・不具合・メンテナンスのご要望など、アフターケアまで自社にて対応いたします。長くお使いいただける家具をお届けすることが、私たちの誇りです。</p>
+        <p class="step-note">修理・リメイクのご相談もお気軽にどうぞ。</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ===== FAQ SECTION ===== -->
+<section class="faq-section">
+  <div class="section-header light" data-anim="up">
+    <span class="en">FAQ</span>
+    <h2>よくあるご質問</h2>
+  </div>
+
+  <div class="faq-list">
+
+    <div class="faq-item" data-anim="up" data-delay="0">
+      <div class="faq-q">
+        <div class="faq-q-icon">Q</div>
+        <div class="faq-q-text">納期はどのくらいかかりますか？</div>
+        <div class="faq-toggle">+</div>
+      </div>
+      <div class="faq-a">
+        <p>内容によって異なりますが、打ち合わせ・設計に1〜2週間、製作に2〜8週間が目安です。シンプルな家具であれば比較的短期間で対応できる場合もあります。お急ぎの場合は、ご相談の際にお知らせください。できる限り対応いたします。</p>
+      </div>
+    </div>
+
+    <div class="faq-item" data-anim="up" data-delay="60">
+      <div class="faq-q">
+        <div class="faq-q-icon">Q</div>
+        <div class="faq-q-text">価格の目安を教えてください。</div>
+        <div class="faq-toggle">+</div>
+      </div>
+      <div class="faq-a">
+        <p>サイズ・素材・形状・仕上げ方法によって大きく異なります。ダイニングテーブルで10〜30万円台、壁面収納で20〜60万円台が一般的な目安ですが、あくまで参考値です。お見積りは無料ですので、まずはお気軽にご相談ください。ご予算をお伝えいただければ、その範囲内でのご提案も可能です。</p>
+      </div>
+    </div>
+
+    <div class="faq-item" data-anim="up" data-delay="120">
+      <div class="faq-q">
+        <div class="faq-q-icon">Q</div>
+        <div class="faq-q-text">既存の家具の修理・リメイクは対応できますか？</div>
+        <div class="faq-toggle">+</div>
+      </div>
+      <div class="faq-a">
+        <p>はい、対応しております。傷や割れの補修、塗装の塗り替え、サイズ変更、部品交換など、幅広い修理・リメイクに対応しています。長年お使いの大切な家具をよみがえらせることも私たちの得意領域です。まずはお気軽にご相談ください。</p>
+      </div>
+    </div>
+
+    <div class="faq-item" data-anim="up" data-delay="0">
+      <div class="faq-q">
+        <div class="faq-q-icon">Q</div>
+        <div class="faq-q-text">NC加工とはどのような加工ですか？</div>
+        <div class="faq-toggle">+</div>
+      </div>
+      <div class="faq-a">
+        <p>NC（Numerical Control）加工とは、コンピュータで制御された機械による精密加工のことです。複雑な曲線、彫刻、規則的なパターンカットなどを高精度かつ再現性高く仕上げることができます。手作業では難しい形状の加工や、複数のパーツを均一に作る際にも威力を発揮します。</p>
+      </div>
+    </div>
+
+    <div class="faq-item" data-anim="up" data-delay="60">
+      <div class="faq-q">
+        <div class="faq-q-icon">Q</div>
+        <div class="faq-q-text">変形・曲面の家具も製作できますか？</div>
+        <div class="faq-toggle">+</div>
+      </div>
+      <div class="faq-a">
+        <p>はい、得意領域のひとつです。L字・コの字・弧状など、部屋の形状に合わせた変形家具や、曲面を取り入れたデザイン家具も製作可能です。NC加工機と職人の技術を組み合わせることで、複雑な形状にも対応しています。まずは図面・スケッチ・写真などをお送りいただければご相談できます。</p>
+      </div>
+    </div>
+
+    <div class="faq-item" data-anim="up" data-delay="120">
+      <div class="faq-q">
+        <div class="faq-q-icon">Q</div>
+        <div class="faq-q-text">店舗・オフィス向けの什器にも対応していますか？</div>
+        <div class="faq-toggle">+</div>
+      </div>
+      <div class="faq-a">
+        <p>はい、対応しております。店舗の陳列棚・カウンター・受付家具から、オフィスのデスク・会議テーブルまで幅広く対応しています。設計から施工・搬入まで一貫して自社で対応できるため、工程間のロスが少なく、品質・納期をしっかり管理できます。複数台のご注文もお気軽にご相談ください。</p>
+      </div>
+    </div>
+
+    <div class="faq-item" data-anim="up" data-delay="0">
+      <div class="faq-q">
+        <div class="faq-q-icon">Q</div>
+        <div class="faq-q-text">素材はどのようなものが選べますか？</div>
+        <div class="faq-toggle">+</div>
+      </div>
+      <div class="faq-a">
+        <p>ウォールナット・オーク・タモ・チェリー・パイン・ヒノキなどの天然木材のほか、メラミン化粧板・突板・集成材・塗装仕上げなど多様な素材に対応しています。使用環境・ご予算・デザインのご希望に合わせてご提案しますので、お打ち合わせの際にお気軽にご相談ください。サンプルのご確認も可能です。</p>
+      </div>
+    </div>
+
+    <div class="faq-item" data-anim="up" data-delay="60">
+      <div class="faq-q">
+        <div class="faq-q-icon">Q</div>
+        <div class="faq-q-text">群馬県外でも対応できますか？</div>
+        <div class="faq-toggle">+</div>
+      </div>
+      <div class="faq-a">
+        <p>はい、ご対応可能です。これまでも群馬県内のみならず、関東・甲信越を中心に遠方のお客様からもご依頼をいただいております。遠方の場合は、メール・電話・オンラインでの打ち合わせを活用し、搬入・施工についてもご相談の上対応いたします。まずはお気軽にご連絡ください。</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div data-anim="up">
+    <h2>まずはお気軽にご相談ください</h2>
+    <p>お見積りは無料です。サイズ・素材・ご予算など、<br>どんな小さなことでもお気軽にお問い合わせください。</p>
+    <div class="cta-btns">
+      <a href="contact.html" class="btn-cta-primary">お問い合わせ・お見積り</a>
+      <a href="tel:0273432005" class="btn-cta-secondary">☎ 027-343-2005</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="f-logo">株式会社新井家具 © 2025</div>
+  <div class="f-info">〒370-0883 群馬県高崎市剣崎町91<br>営業時間 8:15〜17:30 定休日：日曜・祝日</div>
+</footer>
+
+<script>
+// ===== アコーディオン =====
+(function() {
+  document.querySelectorAll('.faq-q').forEach(function(q) {
+    q.addEventListener('click', function() {
+      const item = this.closest('.faq-item');
+      const isOpen = item.classList.contains('open');
+
+      // 他を閉じる（オプション: すべて閉じてから開く）
+      document.querySelectorAll('.faq-item.open').forEach(function(openItem) {
+        openItem.classList.remove('open');
+      });
+
+      if (!isOpen) {
+        item.classList.add('open');
+      }
+    });
+  });
+})();
+
+// ===== スクロールアニメーション =====
+(function() {
+  const observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        const el = entry.target;
+        const delay = parseInt(el.dataset.delay || 0);
+        setTimeout(function() {
+          el.classList.add('anim-in');
+        }, delay);
+        observer.unobserve(el);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('[data-anim]').forEach(function(el) {
+    observer.observe(el);
+  });
+})();
+</script>
+
+</body>
+</html>
+

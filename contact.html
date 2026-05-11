@@ -1,0 +1,446 @@
+﻿<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>お問い合わせ | 株式会社新井家具</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&display=swap" rel="stylesheet">
+<style>
+:root {
+  --brown-deep: #3d2b1f;
+  --brown-mid: #6b4f3a;
+  --brown-light: #a0784a;
+  --cream: #f5ede0;
+  --gold: #c9a05a;
+  --text: #2a1e14;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'Noto Serif JP', serif; background:var(--cream); color:var(--text); }
+
+/* NAV */
+nav {
+  background:var(--brown-deep);
+  padding:0 48px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  position:sticky; top:0; z-index:200;
+}
+.nav-logo { padding:20px 0; }
+.nav-logo h1 { color:var(--cream); font-size:15px; letter-spacing:3px; font-weight:400; }
+.nav-logo p { color:var(--gold); font-size:10px; letter-spacing:2px; font-family:'Cormorant Garamond', serif; }
+.nav-links { display:flex; gap:32px; }
+.nav-links a { color:rgba(245,237,224,.75); font-size:12px; letter-spacing:1px; text-decoration:none; transition:.2s; padding:28px 0; border-bottom:2px solid transparent; }
+.nav-links a:hover { color:var(--cream); border-bottom-color:var(--gold); }
+.nav-tel { color:var(--gold); font-size:13px; letter-spacing:1px; font-family:'Cormorant Garamond', serif; }
+
+/* PAGE HEADER */
+.page-header {
+  height:300px;
+  background:linear-gradient(135deg, var(--brown-deep) 0%, #5a3d28 50%, var(--brown-mid) 100%);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  position:relative;
+  overflow:hidden;
+}
+.page-header::before {
+  content:'';
+  position:absolute; inset:0;
+  background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+.page-header-inner { position:relative; z-index:1; text-align:center; }
+.page-header .en { font-family:'Cormorant Garamond', serif; font-size:13px; letter-spacing:5px; color:var(--gold); display:block; margin-bottom:16px; }
+.page-header h2 { color:var(--cream); font-size:36px; font-weight:300; letter-spacing:6px; }
+.breadcrumb { position:absolute; bottom:24px; left:50%; transform:translateX(-50%); display:flex; gap:8px; align-items:center; z-index:1; }
+.breadcrumb a, .breadcrumb span { font-size:11px; color:rgba(245,237,224,.5); text-decoration:none; letter-spacing:1px; }
+.breadcrumb a:hover { color:var(--gold); }
+.breadcrumb .sep { color:rgba(201,160,90,.4); }
+.breadcrumb .current { color:rgba(245,237,224,.8); }
+
+/* CONTACT SECTION */
+.contact-section {
+  padding:80px 48px 100px;
+  background:linear-gradient(160deg, var(--brown-mid) 0%, var(--brown-deep) 100%);
+}
+.contact-inner { max-width:860px; margin:0 auto; }
+
+/* SECTION HEADER */
+.section-header { text-align:center; margin-bottom:56px; }
+.section-header .en { font-family:'Cormorant Garamond', serif; font-size:13px; letter-spacing:4px; color:var(--gold); display:block; margin-bottom:12px; }
+.section-header h2 { font-size:28px; font-weight:300; letter-spacing:3px; color:var(--cream); }
+.section-header::after { content:''; display:block; width:48px; height:1px; background:var(--gold); margin:20px auto 0; }
+
+/* TEL BAR */
+.tel-bar {
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:28px;
+  background:rgba(255,255,255,.05);
+  border:1px solid rgba(201,160,90,.28);
+  padding:24px 48px;
+  margin-bottom:48px;
+}
+.tel-bar-left { text-align:center; }
+.tel-bar-left .tel-num {
+  font-family:'Cormorant Garamond', serif;
+  font-size:36px;
+  font-weight:300;
+  color:var(--gold);
+  text-decoration:none;
+  letter-spacing:2px;
+  display:block;
+  transition:.2s;
+}
+.tel-bar-left .tel-num:hover { color:var(--cream); }
+.tel-bar-left .tel-hours { font-size:11px; color:rgba(245,237,224,.45); letter-spacing:2px; margin-top:6px; }
+
+/* DIVIDER */
+.contact-divider {
+  display:flex; align-items:center; gap:16px; margin-bottom:40px;
+}
+.contact-divider::before, .contact-divider::after {
+  content:''; flex:1; height:1px; background:rgba(201,160,90,.2);
+}
+.contact-divider span {
+  color:rgba(245,237,224,.4); font-size:11px; letter-spacing:3px;
+  font-family:'Cormorant Garamond', serif;
+}
+
+/* FORM */
+.cf { display:grid; gap:22px; }
+.cf-row { display:grid; grid-template-columns:1fr 1fr; gap:20px; }
+.cf-group { display:flex; flex-direction:column; gap:8px; }
+.cf-group label { font-size:11px; letter-spacing:2px; color:rgba(245,237,224,.6); }
+.cf-group label .req { color:var(--gold); margin-left:4px; }
+.cf-group input,
+.cf-group select,
+.cf-group textarea {
+  background:rgba(255,255,255,.06);
+  border:1px solid rgba(201,160,90,.25);
+  color:var(--cream);
+  font-family:'Noto Serif JP', serif;
+  font-size:13px;
+  padding:14px 16px;
+  outline:none;
+  transition:.25s;
+  width:100%;
+  border-radius:0;
+  -webkit-appearance:none;
+}
+.cf-group input::placeholder,
+.cf-group textarea::placeholder { color:rgba(245,237,224,.25); }
+.cf-group input:focus,
+.cf-group select:focus,
+.cf-group textarea:focus { border-color:var(--gold); background:rgba(255,255,255,.1); }
+.cf-group input.error,
+.cf-group select.error,
+.cf-group textarea.error { border-color:#e07070; background:rgba(224,112,112,.04); }
+.cf-group .err-msg { font-size:10px; color:#e07070; letter-spacing:1px; display:none; }
+.cf-group .err-msg.show { display:block; }
+.cf-group select option { background:var(--brown-deep); color:var(--cream); }
+.cf-group textarea { resize:vertical; min-height:160px; }
+
+.cf-privacy {
+  font-size:11px;
+  color:rgba(245,237,224,.4);
+  line-height:2;
+  text-align:center;
+  border:1px solid rgba(201,160,90,.1);
+  padding:16px 24px;
+  background:rgba(255,255,255,.02);
+}
+
+.cf-submit {
+  background:var(--gold);
+  color:var(--brown-deep);
+  border:none;
+  padding:18px 72px;
+  font-size:12px;
+  letter-spacing:4px;
+  cursor:pointer;
+  font-family:'Noto Serif JP', serif;
+  transition:.25s;
+  display:block;
+  margin:0 auto;
+}
+.cf-submit:hover { background:var(--cream); }
+.cf-submit:disabled { opacity:.5; cursor:not-allowed; }
+
+/* SUCCESS */
+.cf-success {
+  display:none;
+  text-align:center;
+  padding:56px 32px;
+  background:rgba(201,160,90,.07);
+  border:1px solid rgba(201,160,90,.28);
+}
+.cf-success .success-icon { font-size:48px; margin-bottom:20px; }
+.cf-success h3 { color:var(--gold); font-size:22px; font-weight:300; letter-spacing:3px; margin-bottom:16px; }
+.cf-success p { color:rgba(245,237,224,.65); font-size:13px; line-height:2.2; }
+
+/* FOOTER */
+footer { background:#1a0f08; padding:40px 48px; display:flex; justify-content:space-between; align-items:center; }
+footer .f-logo { color:rgba(245,237,224,.4); font-size:11px; letter-spacing:2px; }
+footer .f-info { color:rgba(245,237,224,.3); font-size:10px; text-align:right; line-height:1.8; }
+
+/* ANIMATIONS */
+[data-anim] {
+  opacity: 0;
+  transition: opacity .75s cubic-bezier(.4,0,.2,1), transform .75s cubic-bezier(.4,0,.2,1);
+}
+[data-anim="up"]    { transform: translateY(48px); }
+[data-anim="left"]  { transform: translateX(-56px); }
+[data-anim="right"] { transform: translateX(56px); }
+[data-anim="scale"] { transform: scale(.88); }
+[data-anim="fade"]  { }
+[data-anim].anim-in {
+  opacity: 1 !important;
+  transform: none !important;
+}
+@keyframes lineExpand {
+  from { width:0; }
+  to   { width:48px; }
+}
+.section-header.anim-in::after {
+  animation: lineExpand .5s .3s both;
+  width: 0;
+}
+@keyframes headerIn {
+  from { opacity:0; transform:translateY(24px); }
+  to   { opacity:1; transform:translateY(0); }
+}
+.page-header .en { animation: headerIn .7s .2s both; }
+.page-header h2  { animation: headerIn .7s .4s both; }
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  nav { padding:0 20px; }
+  .nav-links { gap:12px; }
+  .page-header { height:220px; }
+  .page-header h2 { font-size:26px; }
+  .contact-section { padding:48px 20px 64px; }
+  .tel-bar { flex-direction:column; gap:8px; padding:20px 24px; }
+  .tel-bar-left .tel-num { font-size:28px; }
+  .cf-row { grid-template-columns:1fr; }
+  footer { flex-direction:column; gap:12px; text-align:center; padding:28px 20px; }
+  footer .f-info { text-align:center; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">
+    <h1>株式会社新井家具</h1>
+    <p>ARAI KAGU SEISAKUSHO</p>
+  </div>
+  <div class="nav-links">
+    <a href="arai_01_craft.html">ホーム</a>
+    <a href="works.html">製作事例</a>
+    <a href="process.html">製作の流れ・FAQ</a>
+    <a href="about.html">会社概要</a>
+    <a href="contact.html" style="color:var(--gold)">お問い合わせ</a>
+  </div>
+  <div class="nav-tel"><a href="tel:0273432005" style="color:inherit;text-decoration:none;">☎ 027-343-2005</a></div>
+</nav>
+
+<!-- PAGE HEADER -->
+<div class="page-header">
+  <div class="page-header-inner">
+    <span class="en">CONTACT</span>
+    <h2>お問い合わせ</h2>
+  </div>
+  <nav class="breadcrumb" aria-label="パンくず">
+    <a href="arai_01_craft.html">ホーム</a>
+    <span class="sep">›</span>
+    <span class="current">お問い合わせ</span>
+  </nav>
+</div>
+
+<!-- CONTACT SECTION -->
+<section class="contact-section">
+  <div class="contact-inner">
+
+    <div class="section-header" data-anim="up">
+      <span class="en">CONTACT</span>
+      <h2>お問い合わせ</h2>
+    </div>
+
+    <!-- 電話バー -->
+    <div class="tel-bar" data-anim="up" data-delay="80">
+      <div class="tel-bar-left">
+        <a href="tel:0273432005" class="tel-num">☎ 027-343-2005</a>
+        <p class="tel-hours">受付時間 8:15〜17:30（日曜・祝日除く）</p>
+      </div>
+    </div>
+
+    <div class="contact-divider" data-anim="fade" data-delay="160">
+      <span>または メールでお問い合わせ</span>
+    </div>
+
+    <!-- フォーム -->
+    <form class="cf" id="contactForm" novalidate data-anim="up" data-delay="200">
+
+      <div class="cf-row">
+        <div class="cf-group">
+          <label>お名前<span class="req">*</span></label>
+          <input type="text" name="name" placeholder="山田 太郎" autocomplete="name">
+          <span class="err-msg">お名前を入力してください</span>
+        </div>
+        <div class="cf-group">
+          <label>会社名・屋号</label>
+          <input type="text" name="company" placeholder="〇〇株式会社（任意）" autocomplete="organization">
+        </div>
+      </div>
+
+      <div class="cf-row">
+        <div class="cf-group">
+          <label>メールアドレス<span class="req">*</span></label>
+          <input type="email" name="email" placeholder="example@email.com" autocomplete="email">
+          <span class="err-msg">正しいメールアドレスを入力してください</span>
+        </div>
+        <div class="cf-group">
+          <label>電話番号</label>
+          <input type="tel" name="tel" placeholder="027-000-0000（任意）" autocomplete="tel">
+        </div>
+      </div>
+
+      <div class="cf-group">
+        <label>お問い合わせ種別<span class="req">*</span></label>
+        <select name="category">
+          <option value="">選択してください</option>
+          <option value="order">オーダー家具の製作について</option>
+          <option value="nc">NC加工について</option>
+          <option value="curve">変形・曲面家具について</option>
+          <option value="large">大型家具・店舗什器について</option>
+          <option value="repair">修理・リフォームについて</option>
+          <option value="estimate">お見積りのご依頼</option>
+          <option value="other">その他</option>
+        </select>
+        <span class="err-msg">種別を選択してください</span>
+      </div>
+
+      <div class="cf-group">
+        <label>お問い合わせ内容<span class="req">*</span></label>
+        <textarea name="message" placeholder="ご要望・ご質問をできるだけ詳しくご記入ください。&#10;（サイズ・素材・数量・設置場所など）"></textarea>
+        <span class="err-msg">お問い合わせ内容を入力してください</span>
+      </div>
+
+      <p class="cf-privacy">送信いただいた個人情報は、お問い合わせへの回答のみに使用し、第三者への提供は行いません。</p>
+
+      <button type="submit" class="cf-submit">送　信</button>
+    </form>
+
+    <!-- 送信完了メッセージ -->
+    <div class="cf-success" id="cfSuccess">
+      <div class="success-icon">✉</div>
+      <h3>送信が完了しました</h3>
+      <p>お問い合わせありがとうございます。<br>内容を確認のうえ、2〜3営業日以内にご連絡いたします。</p>
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  <div class="f-logo">株式会社新井家具 © 2025</div>
+  <div class="f-info">〒370-0883 群馬県高崎市剣崎町91<br>営業時間 8:15〜17:30 定休日：日曜・祝日</div>
+</footer>
+
+<script>
+// フォームバリデーション
+(function() {
+  var form = document.getElementById('contactForm');
+  var success = document.getElementById('cfSuccess');
+  if (!form) return;
+
+  function isValidEmail(val) {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val);
+  }
+
+  function validateField(field) {
+    var group = field.closest('.cf-group');
+    var err = group ? group.querySelector('.err-msg') : null;
+    var ok = true;
+
+    if (field.name === 'name') {
+      ok = field.value.trim() !== '';
+    } else if (field.name === 'email') {
+      ok = isValidEmail(field.value.trim());
+    } else if (field.name === 'category') {
+      ok = field.value !== '';
+    } else if (field.name === 'message') {
+      ok = field.value.trim() !== '';
+    }
+
+    field.classList.toggle('error', !ok);
+    if (err) err.classList.toggle('show', !ok);
+    return ok;
+  }
+
+  // リアルタイムバリデーション（blur & input）
+  ['name', 'email', 'category', 'message'].forEach(function(n) {
+    var f = form.querySelector('[name="' + n + '"]');
+    if (!f) return;
+    f.addEventListener('blur', function() { validateField(this); });
+    f.addEventListener('input', function() {
+      if (this.classList.contains('error')) validateField(this);
+    });
+    f.addEventListener('change', function() {
+      if (this.classList.contains('error')) validateField(this);
+    });
+  });
+
+  // 送信処理
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    var required = ['name', 'email', 'category', 'message'];
+    var allOk = true;
+    required.forEach(function(n) {
+      var f = form.querySelector('[name="' + n + '"]');
+      if (f && !validateField(f)) allOk = false;
+    });
+    if (!allOk) {
+      // 最初のエラーフィールドにフォーカス
+      var firstError = form.querySelector('.error');
+      if (firstError) firstError.focus();
+      return;
+    }
+    var btn = form.querySelector('.cf-submit');
+    btn.disabled = true;
+    btn.textContent = '送信中…';
+    // 実際の送信処理はここにAPIを組み込みます
+    setTimeout(function() {
+      form.style.display = 'none';
+      success.style.display = 'block';
+      success.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }, 1000);
+  });
+})();
+
+// スクロールアニメーション
+(function() {
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        var el = entry.target;
+        var delay = parseInt(el.dataset.delay || 0);
+        setTimeout(function() {
+          el.classList.add('anim-in');
+        }, delay);
+        observer.unobserve(el);
+      }
+    });
+  }, { threshold: 0.15 });
+
+  document.querySelectorAll('[data-anim]').forEach(function(el) {
+    observer.observe(el);
+  });
+})();
+</script>
+
+</body>
+</html>
+
